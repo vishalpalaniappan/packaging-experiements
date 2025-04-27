@@ -1,0 +1,20 @@
+version: '3'
+
+vars:
+  G_SRC_DIR: "{{.ROOT_DIR}}/src"
+  
+tasks:
+  speak:
+    cmds:
+      - echo "Speaking!"
+      
+  delete_file:
+    cmds:
+      - |
+        echo '{{.G_SRC_DIR}}'
+        if [ -f '{{.G_SRC_DIR}}'/test.py ]; then
+          rm {{.G_SRC_DIR}}/test.py
+          echo "File deleted."
+        else
+          echo "File does not exist."
+        fi
