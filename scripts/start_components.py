@@ -1,5 +1,5 @@
 import subprocess
-from utils import containerExists, buildDocker
+from utils import doesContainerExist, buildDocker
 from constants import *
 
 def buildImages():
@@ -28,7 +28,7 @@ def startQueryServer():
         Starts the query server.
     '''
     print("Starting Query Server...")
-    if (containerExists(QUERY_CONTAINER_NAME)):
+    if (doesContainerExist(QUERY_CONTAINER_NAME)):
         subprocess.run(["docker", "start", QUERY_CONTAINER_NAME])
     else:
         cmd = [
@@ -48,7 +48,7 @@ def startASV():
     '''
 
     print("Starting asv...")
-    if (containerExists(ASV_CONTAINER_NAME)):
+    if (doesContainerExist(ASV_CONTAINER_NAME)):
         subprocess.run(["docker", "start", ASV_CONTAINER_NAME])
     else:
         cmd = [
@@ -68,7 +68,7 @@ def startDLV():
     '''
 
     print("Starting dlv...")    
-    if (containerExists(DLV_CONTAINER_NAME)):
+    if (doesContainerExist(DLV_CONTAINER_NAME)):
         subprocess.run(["docker", "start", DLV_CONTAINER_NAME])
     else:
         cmd = [
@@ -88,7 +88,7 @@ def startDB():
     '''
 
     print("Starting database...")
-    if (containerExists(DATABASE_CONTAINER_NAME)):
+    if (doesContainerExist(DATABASE_CONTAINER_NAME)):
         subprocess.run(["docker", "start", DATABASE_CONTAINER_NAME])
     else:
         cmd = [
