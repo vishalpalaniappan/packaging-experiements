@@ -10,3 +10,16 @@ tasks:
   default:
     cmds:
       - task: tests:speak
+
+  install-deps:
+    cmds:
+      - "git submodule update --init --recursive"
+
+  start:
+    cmds:
+      - task: install-deps
+      - "python3 {{.ROOT_DIR}}/scripts/start_components.py"
+
+  stop:
+    cmds:
+      - "python3 {{.ROOT_DIR}}/scripts/stop_components.py"
